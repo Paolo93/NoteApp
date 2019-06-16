@@ -1,9 +1,13 @@
 import styled, { css } from 'styled-components';
 
 const Button = styled.button`
-  padding: 0;
-  background-color: ${({theme}) => theme.note};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${({ activeColor, theme}) => theme[activeColor]};
   width: ${({ width }) => width || '220px'};
+  text-decoration: none;
+  padding: 0;
   height: 47px;
   border: none;
   border-radius: 50px;

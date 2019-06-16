@@ -22,6 +22,18 @@ const StyledWrapper = styled.div`
   width: 100%;
   margin: 100px;
 
+  @media (max-width: 1200px) {
+    width: 80vw;
+  }
+`;
+
+const StyledLink = styled.a`
+  display: block;
+  font-weight: ${({ theme }) => theme.bold};
+  font-size: ${({ theme }) => theme.fontSize.xs};
+  color: black;
+  text-transform: uppercase;
+  margin: 20px 0 50px;
 `;
 
 const DetailsTemplate = ({ pageType, title, created, content, articleUrl, twitterName }) => (
@@ -30,11 +42,15 @@ const DetailsTemplate = ({ pageType, title, created, content, articleUrl, twitte
       <StyledHeading>{title}</StyledHeading>
       <DateInfo>{created}</DateInfo>
       <Paragraph >{content}</Paragraph>
-      <Link to="/">
-        <Button>
+     
+      {pageType === 'articles' && <StyledLink href={articleUrl}>Open article</StyledLink>}
+      {pageType === 'twitters' && 
+        <StyledLink alt={title} href={`https://avatars.io/twitter/${twitterName}`}>Open This Twitter</StyledLink>
+      }
+     
+        <Button  as={Link} to={`/${pageType}`} activeColor={pageType}>
           go back
         </Button>
-      </Link>
     </StyledWrapper>
   </UserPageTemplate>
 );
