@@ -6,7 +6,7 @@ import UserPageTemplate from 'templates/UserPageTemplate';
 import Heading from 'components/atoms/Heading/Heading';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import Button from 'components/atoms/Button/Button';
-
+import withContext from 'hoc/withContext';
 
 const DateInfo = styled(Paragraph)`
   font-size: ${({theme}) => theme.fontSize.xs};
@@ -74,5 +74,5 @@ DetailsTemplate.defaultProps = {
   twitterName: '',
 };
 
-export default DetailsTemplate;
+export default withContext(DetailsTemplate);
 

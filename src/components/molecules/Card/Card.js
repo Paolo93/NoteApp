@@ -6,6 +6,9 @@ import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import Heading from 'components/atoms/Heading/Heading';
 import Button from 'components/atoms/Button/Button';
 import LinkIcon from 'assets/link.svg'
+import { connect } from 'react-redux';
+import {removeItem as removeItemAction} from 'actions';
+import withContext from 'hoc/withContext';
 
 const StyledWrapper = styled.div`
     min-height: 380px;
@@ -77,25 +80,26 @@ class Card extends Component {
 
     render() 
     {
-        const { id, cardType, title, created, twitterName, articleUrl, content } = this.props;
-    
+        const { id, pageContext, title, created, twitterName, 
+            articleUrl, content, removeItem } = this.props;
+        const { redirect } = this.state;
         if (this.state.redirect) {
-            return <Redirect to={`${cardType}/${id}`} />;
+            return <Redirect to={`${pageContext}/${id}`} />;
         }
         
         return (
         <StyledWrapper onClick={this.handleCardClick}>
-            <InnerWrapper activeColor={cardType}>
+            <InnerWrapper activeColor={pageContext}>
                 <StyledHeading>{title}</StyledHeading>
                 <DateInfo>{created}</DateInfo>
-                {cardType === 'twitters' && <StyledAvatar src="https://avatars.io/facebook/100002589551816"/>}
-                {cardType === 'articles' && <StyledLinkButton href="https://rwbit.pl/10-sposobow-jak-sie-uczyc-gdy-nie-masz-czasu/?fbclid=IwAR0Br_fVK5gdTAYBU3aKy0Wah_nDRo4vWeIA-_Vc4_RzT8HWpJENGwMDbC0"></StyledLinkButton>}
+                {pageContext === 'twitters' && <StyledAvatar src="https://avatars.io/facebook/100002589551816"/>}
+                {pageContext === 'articles' && <StyledLinkButton href="https://rwbit.pl/10-sposobow-jak-sie-uczyc-gdy-nie-masz-czasu/?fbclid=IwAR0Br_fVK5gdTAYBU3aKy0Wah_nDRo4vWeIA-_Vc4_RzT8HWpJENGwMDbC0"></StyledLinkButton>}
             </InnerWrapper>
             <InnerWrapper flex>
                 <Paragraph>
                     {content}
                 </Paragraph>
-                <Button secondary>Remove</Button>
+                <Button onClick={() => removeItem(pageContext, id)} secondary>Remove</Button>
             </InnerWrapper>
         </StyledWrapper>
         )
@@ -104,19 +108,24 @@ class Card extends Component {
 
 Card.propTypes = {
     id: PropTypes.number.isRequired,
-    cardType: PropTypes.oneOf(['notes', 'twitters', 'articles']),
+    pageContext: PropTypes.oneOf(['notes', 'twitters', 'articles']),
     title: PropTypes.string.isRequired,
     created: PropTypes.string.isRequired,
     twitterName: PropTypes.string,
     articleUrl: PropTypes.string,
     content: PropTypes.string.isRequired,
+    removeItem: PropTypes.func.isRequired,
   };
   
   Card.defaultProps = {
-    cardType: 'notes',
+    pageContext: 'notes',
     id: 1,
     twitterName: null,
     articleUrl: null,
   };
+
+  const mapDispatchToProps = dispatch => ({
+      removeItem: (itemType, id) => dispatch(removeItemAction(itemType, id)),
+  });
   
-  export default Card;
+  export default connect(null, mapDispatchToProps)(withContext(Card));
