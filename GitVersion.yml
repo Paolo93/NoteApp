@@ -1,4 +1,4 @@
-next-version: 1.0.0
+
 assembly-versioning-scheme: MajorMinorPatch
 branches: {
   master: 
