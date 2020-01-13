@@ -67,7 +67,7 @@ class GridTemplate extends Component {
             <StyledHeading big as="h1">
               {pageContext}
             </StyledHeading>
-            <StyledParagraph>99 {pageContext}</StyledParagraph>
+            <StyledParagraph>100 {pageContext}</StyledParagraph>
           </StyledPageHeader>
           <StyledGrid>{children}</StyledGrid>
           <StyledButtonIcon
