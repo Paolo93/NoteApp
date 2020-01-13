@@ -5,11 +5,13 @@ branches: {
   master: 
     mode: ContinuousDeployment
     increment: Patch
+    prevent-increment-of-merged-branch-version: true
     track-merge-target: false,
   develop:
     track-merge-target: true
     mode: ContinuousDeployment
     increment: Patch
+    prevent-increment-of-merged-branch-version: true
 }
 ignore:
   sha: []
