@@ -1,5 +1,13 @@
 next-version: 1.0.0
-branches: {}
+assembly-versioning-scheme: MajorMinorPatch
+branches: {
+  master: 
+    mode: ContinuousDeployment
+    track-merge-target: false,
+  develop:
+    track-merge-target: true
+    mode: ContinuousDeployment
+}
 ignore:
   sha: []
 merge-message-formats: {}
