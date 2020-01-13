@@ -1,8 +1,9 @@
-
+mode: ContinuousDeployment
 assembly-versioning-scheme: MajorMinorPatch
 branches: {
   master: 
     mode: ContinuousDeployment
+    increment: Patch
     track-merge-target: false,
   develop:
     track-merge-target: true
