@@ -9,6 +9,7 @@ branches: {
   develop:
     track-merge-target: true
     mode: ContinuousDeployment
+    increment: Patch
 }
 ignore:
   sha: []
