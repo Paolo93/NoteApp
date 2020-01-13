@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import UserPageTemplate from 'templates/UserPageTemplate';
@@ -9,7 +9,6 @@ import ButtonIcon from 'components/atoms/ButtonIcon/ButtonIcon';
 import plusIcon from 'assets/plus.svg';
 import NewItemBar from 'components/organisms/NewItemBar/NewItemBar';
 import withContext from 'hoc/withContext';
-
 
 const StyledWrapper = styled.div`
   position: relative;
@@ -32,18 +31,18 @@ const StyledHeading = styled(Heading)`
 
 const StyledParagraph = styled(Paragraph)`
   margin: 0;
-  font-weight: ${({ theme }) => theme.bold}; 
+  font-weight: ${({ theme }) => theme.bold};
 `;
 
 const StyledButtonIcon = styled(ButtonIcon)`
   position: fixed;
   bottom: 40px;
   right: 40px;
-  background-color: ${({activeColor, theme}) => theme[activeColor]};
+  background-color: ${({ activeColor, theme }) => theme[activeColor]};
   background-size: 40%;
   border-radius: 50%;
   z-index: 10;
-`
+`;
 
 class GridTemplate extends Component {
   state = {
@@ -57,19 +56,18 @@ class GridTemplate extends Component {
   };
 
   render() {
-
-    const {children, pageContext} = this.props;
+    const { children, pageContext } = this.props;
     const { isNewItemBarVisible } = this.state;
 
     return (
-<UserPageTemplate>
+      <UserPageTemplate>
         <StyledWrapper>
           <StyledPageHeader>
             <Input search placeholder="Search" />
             <StyledHeading big as="h1">
               {pageContext}
             </StyledHeading>
-            <StyledParagraph>6 {pageContext}</StyledParagraph>
+            <StyledParagraph>99 {pageContext}</StyledParagraph>
           </StyledPageHeader>
           <StyledGrid>{children}</StyledGrid>
           <StyledButtonIcon
@@ -80,7 +78,7 @@ class GridTemplate extends Component {
           <NewItemBar handleClose={this.toggleNewItemBar} isVisible={isNewItemBarVisible} />
         </StyledWrapper>
       </UserPageTemplate>
-    )
+    );
   }
 }
 
@@ -94,4 +92,3 @@ GridTemplate.defaultProps = {
 };
 
 export default withContext(GridTemplate);
-  
