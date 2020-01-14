@@ -6,17 +6,14 @@ branches:
     mode: ContinuousDeployment
     increment: Major
     prevent-increment-of-merged-branch-version: false
-    track-merge-target: false
   develop:
     track-merge-target: true
     mode: ContinuousDeployment
     increment: Minor
-
   pull-request:
     regex: '(pull|pull\-requests|pr)[/-]'
     mode: ContinuousDelivery
     increment: Patch
-
 ignore:
   sha: []
 merge-message-formats: {}
