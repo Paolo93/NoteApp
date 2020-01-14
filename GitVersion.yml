@@ -11,14 +11,12 @@ branches:
     track-merge-target: true
     mode: ContinuousDeployment
     increment: Minor
-    prevent-increment-of-merged-branch-version: false
+
   pull-request:
     regex: '(pull|pull\-requests|pr)[/-]'
     mode: ContinuousDelivery
-    increment: Minor
-    prevent-increment-of-merged-branch-version: false
-    tracks-release-branches: false
-    is-release-branch: false
+    increment: Patch
+
 ignore:
   sha: []
 merge-message-formats: {}
