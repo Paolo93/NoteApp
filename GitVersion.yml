@@ -1,5 +1,5 @@
 next-version: 1.0.0
-mode: ContinuousDeployment
+mode: Mainline
 assembly-versioning-scheme: MajorMinorPatch
 branches:
   master:
