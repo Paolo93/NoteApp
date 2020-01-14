@@ -2,20 +2,26 @@ next-version: 1.0.0
 mode: ContinuousDeployment
 mode: Mainline
 assembly-versioning-scheme: MajorMinorPatch
-branches: {
+branches: 
   master: 
     regex: master
     mode: ContinuousDeployment
     increment: Patch
-    prevent-increment-of-merged-branch-version: true
+    prevent-increment-of-merged-branch-version: false
     regex: master
-    track-merge-target: false,
+    track-merge-target: false
   develop:
     track-merge-target: true
     mode: ContinuousDeployment
     increment: Minor
-    prevent-increment-of-merged-branch-version: true
-}
+    prevent-increment-of-merged-branch-version: false
+  pull-request:
+    regex: '(pull|pull\-requests|pr)[/-]'
+    mode: ContinuousDelivery
+    increment: Minor
+    prevent-increment-of-merged-branch-version: false
+    tracks-release-branches: false
+    is-release-branch: false
 ignore:
   sha: []
 merge-message-formats: {}
