@@ -1,16 +1,19 @@
 next-version: 1.0.0
 mode: ContinuousDeployment
+mode: Mainline
 assembly-versioning-scheme: MajorMinorPatch
 branches: {
   master: 
+    regex: master
     mode: ContinuousDeployment
     increment: Patch
     prevent-increment-of-merged-branch-version: true
+    regex: master
     track-merge-target: false,
   develop:
     track-merge-target: true
     mode: ContinuousDeployment
-    increment: Patch
+    increment: Minor
     prevent-increment-of-merged-branch-version: true
 }
 ignore:
