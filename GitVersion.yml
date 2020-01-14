@@ -1,3 +1,4 @@
+nextversion: 1.0.0
 mode: ContinuousDeployment
 assembly-versioning-scheme: MajorMinorPatch
 branches:
